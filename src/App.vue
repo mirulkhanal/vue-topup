@@ -1,21 +1,40 @@
+<template>
+  <div class="app">
+    <NavBar />
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+  </div>
+</template>
+
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import NavBar from './components/NavBar.vue';
 </script>
 
-<template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+<style>
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+.content {
+  flex: 1;
+  padding: 1rem;
+}
 
-  <main>
-    <TheWelcome />
-  </main>
-</template>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
 
 <style scoped>
 header {
