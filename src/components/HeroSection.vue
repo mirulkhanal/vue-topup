@@ -1,74 +1,190 @@
 <template>
-  <section class="hero-section">
-    <div class="container">
-      <Transition name="fade" mode="out-in">
-        <div class="hero-slide" :key="currentSlide">
-          <div class="hero-content">
-            <h1>{{ slides[currentSlide].title }}</h1>
-            <p>{{ slides[currentSlide].description }}</p>
-            <button class="cta-button">{{ slides[currentSlide].cta }}</button>
-          </div>
-          <div class="hero-image">
-            <img :src="slides[currentSlide].image" :alt="slides[currentSlide].title" />
+  <section class="hero-container">
+    <div class="hero-carousel">
+      <div class="carousel-inner" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
+        <div v-for="(slide, index) in slides" :key="index" class="carousel-slide">
+          <img :src="slide.image" :alt="slide.title" class="slide-image" />
+          <div class="slide-content">
+            <h2>{{ slide.title }}</h2>
+            <p>{{ slide.description }}</p>
           </div>
         </div>
-      </Transition>
-      <div class="carousel-indicators">
-        <button
-          v-for="(slide, index) in slides"
-          :key="index"
-          @click="currentSlide = index"
-          :class="{ active: currentSlide === index }"
-          class="indicator-dot"
-        ></button>
+      </div>
+
+      <div class="carousel-controls">
+        <button @click="prevSlide" class="control-arrow prev" aria-label="Previous slide">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+          </svg>
+        </button>
+        <button @click="nextSlide" class="control-arrow next" aria-label="Next slide">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+          </svg>
+        </button>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-// Hero carousel
+// Sample slides data - replace with your actual data
 const slides = ref([
   {
-    title: 'Get More Value on Daily Boosters',
-    description: 'Exclusive deals on game credits and in-game items',
-    cta: 'Shop Now',
-    image: '/placeholder.svg?height=400&width=600',
+    title: 'Welcome to NePOP',
+    description: 'Your online portal to In-App Purchases worldwide',
+    image: 'src/assets/hero-1.jpg',
   },
   {
-    title: 'New Releases Available',
-    description: 'Be the first to play the hottest new titles',
-    cta: 'Explore Games',
-    image: '/placeholder.svg?height=400&width=600',
+    title: 'Make your pick',
+    description: 'Instantly purchase IAP in our vast collection of Games',
+    image: 'src/assets/hero-2.jpg',
   },
   {
-    title: 'Digital Gift Cards',
-    description: 'The perfect gift for gamers - instant delivery',
-    cta: 'Buy Gift Cards',
-    image: '/placeholder.svg?height=400&width=600',
+    title: 'Enjoy Gaming 24/7 x 365',
+    description:
+      'Fully automated purchase flow so you dont miss out on thos important in-game events',
+    image: 'src/assets/hero-3.jpg',
   },
 ])
-const currentSlide = ref(0)
 
-// Automatic carousel
-let carouselInterval = null
-const startCarousel = () => {
-  carouselInterval = setInterval(() => {
-    currentSlide.value = (currentSlide.value + 1) % slides.value.length
-  }, 5000)
+const currentSlide = ref(0)
+const autoplayInterval = ref(null)
+
+const nextSlide = () => {
+  currentSlide.value = (currentSlide.value + 1) % slides.value.length
 }
 
+const prevSlide = () => {
+  currentSlide.value = (currentSlide.value - 1 + slides.value.length) % slides.value.length
+}
+
+// Set up autoplay
 onMounted(() => {
-  startCarousel()
+  autoplayInterval.value = setInterval(nextSlide, 5000)
 })
 
-onUnmounted(() => {
-  clearInterval(carouselInterval)
+// Clean up on component unmount
+onBeforeUnmount(() => {
+  if (autoplayInterval.value) {
+    clearInterval(autoplayInterval.value)
+  }
 })
 </script>
 
 <style scoped>
-@import '../assets/styles/components.css';
+.hero-container {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  height: 80vh; /* Adjust height as needed */
+}
+
+.hero-carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.carousel-inner {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.slide-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  color: white;
+}
+
+.slide-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.slide-content p {
+  font-size: 1.2rem;
+}
+
+.carousel-controls {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.control-arrow {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.control-arrow:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.control-arrow svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Animation for slide content */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-content h2,
+.slide-content p {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.slide-content p {
+  animation-delay: 0.2s;
+}
 </style>

@@ -1,11 +1,9 @@
 <template>
   <div class="cart">
     <h1>Shopping Cart</h1>
-    
-    <div v-if="cart.items.length === 0" class="empty-cart">
-      Your cart is empty.
-    </div>
-    
+
+    <div v-if="cart.items.length === 0" class="empty-cart">Your cart is empty.</div>
+
     <div v-else class="cart-items">
       <div v-for="item in cart.items" :key="item.id" class="cart-item">
         <div class="item-info">
@@ -16,20 +14,16 @@
             <p>${{ item.price.toFixed(2) }} × {{ item.quantity }}</p>
           </div>
         </div>
-        <button @click="cart.removeItem(item.id)" class="remove-button">
-          Remove
-        </button>
+        <button @click="cart.removeItem(item.id)" class="remove-button">Remove</button>
       </div>
-      
+
       <div class="cart-total">
         <span>Total:</span>
         <span>${{ total }}</span>
       </div>
-      
+
       <div class="cart-actions">
-        <router-link to="/shop" class="continue-button">
-          Continue Shopping
-        </router-link>
+        <router-link to="/shop" class="continue-button"> Continue Shopping </router-link>
         <router-link v-if="cart.items.length" to="/checkout" class="checkout-button">
           Proceed to Checkout
         </router-link>
@@ -39,11 +33,11 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { useCartStore } from '../stores/cartStore';
+import { computed } from 'vue'
+import { useCartStore } from '../stores/cartStore'
 
-const cart = useCartStore();
-const total = computed(() => cart.totalPrice.toFixed(2));
+const cart = useCartStore()
+const total = computed(() => cart.totalPrice.toFixed(2))
 </script>
 
 <style scoped>
@@ -119,7 +113,8 @@ h1 {
   margin-top: 1rem;
 }
 
-.continue-button, .checkout-button {
+.continue-button,
+.checkout-button {
   padding: 0.75rem 1rem;
   border-radius: 4px;
   text-decoration: none;
