@@ -73,4 +73,46 @@ const categories = ref([
 
 <style scoped>
 @import '../assets/styles/components.css';
+
+.categories-section {
+  margin-top: 60px; /* Space below navbar, matches hero section */
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.category-card {
+  border-radius: 20px; /* More pronounced rounding */
+  box-shadow:
+    0 8px 32px rgba(44, 62, 80, 0.08),
+    0 1.5px 6px rgba(44, 62, 80, 0.04);
+  overflow: hidden;
+  background: #fff;
+  transition: box-shadow 0.2s;
+}
+
+.category-card:hover {
+  box-shadow:
+    0 12px 40px rgba(44, 62, 80, 0.12),
+    0 2px 8px rgba(44, 62, 80, 0.06);
+}
+
+.category-image img {
+  border-radius: 16px;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .categories-section {
+    margin-top: 40px;
+    width: 98%;
+  }
+  .category-image img {
+    height: 120px;
+  }
+}
 </style>

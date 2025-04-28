@@ -63,4 +63,87 @@ const features = ref([
 
 <style scoped>
 @import '../assets/styles/components.css';
+
+.features-section {
+  margin-top: 60px; /* Space below navbar, matches other sections */
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.features-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px rgba(44, 62, 80, 0.08),
+    0 1.5px 6px rgba(44, 62, 80, 0.04);
+  padding: 2rem 1.5rem;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-item:hover {
+  box-shadow:
+    0 12px 40px rgba(44, 62, 80, 0.12),
+    0 2px 8px rgba(44, 62, 80, 0.06);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.feature-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff2222 0%, #1a1a1a 100%);
+  border-radius: 16px;
+  color: #fff;
+  font-size: 2.2rem;
+  box-shadow: 0 2px 12px 0 rgba(255, 34, 34, 0.13);
+}
+
+.feature-content h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #ff2222;
+}
+
+.feature-content p {
+  font-size: 1.1rem;
+  color: #222;
+}
+
+@media (max-width: 768px) {
+  .features-section {
+    margin-top: 40px;
+    width: 98%;
+  }
+  .features-container {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .feature-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.2rem 1rem;
+  }
+  .feature-icon {
+    margin-bottom: 0.7rem;
+  }
+}
 </style>

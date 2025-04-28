@@ -39,14 +39,14 @@ const slides = ref([
   },
   {
     title: 'Make your pick',
-    description: 'Instantly purchase IAP in our vast collection of Games',
-    image: 'src/assets/hero-2.jpg',
+    description: 'Instantly make In-App Purchases for all your games',
+    image: 'src/assets/mlbb.jpg',
   },
   {
     title: 'Enjoy Gaming 24/7 x 365',
     description:
       'Fully automated purchase flow so you dont miss out on thos important in-game events',
-    image: 'src/assets/hero-3.jpg',
+    image: 'src/assets/pubg.jpg',
   },
 ])
 
@@ -77,10 +77,12 @@ onBeforeUnmount(() => {
 <style scoped>
 .hero-container {
   width: 90%;
+  /* border: 5px solid red; */
   margin: 0 auto;
+  margin-top: 60px; /* Increased from 40px to 80px to clear the navbar */
   position: relative;
   overflow: hidden;
-  height: 80vh; /* Adjust height as needed */
+  height: 60vh; /* Adjust height as needed */
 }
 
 .hero-carousel {
@@ -88,13 +90,14 @@ onBeforeUnmount(() => {
   height: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 12px; /* Increased from 12px to 24px for more rounding */
 }
 
 .carousel-inner {
   display: flex;
   height: 100%;
   transition: transform 0.5s ease-in-out;
+  border-radius: 12px;
 }
 
 .carousel-slide {
@@ -115,10 +118,11 @@ onBeforeUnmount(() => {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 2rem;
+  padding: 1.2rem;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
   color: white;
+  border-radius: 12px;
 }
 
 .slide-content h2 {

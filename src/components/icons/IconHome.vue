@@ -10,8 +10,7 @@
     viewBox="0 0 24 24"
     style="filter: drop-shadow(0 0 6px #ff2222)"
   >
-    <circle cx="12" cy="12" r="10" />
-    <path d="M12 16v-4" />
-    <path d="M12 8h.01" />
+    <path d="M3 12L12 3l9 9" />
+    <path d="M9 21V9h6v12" />
   </svg>
 </template>
