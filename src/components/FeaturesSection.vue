@@ -1,13 +1,8 @@
 <template>
   <section class="features-section">
     <div class="container">
-      <h2
-        class="section-title"
-        v-motion
-        :initial="{ opacity: 0, y: 100 }"
-        :visible="{ opacity: 1, y: 0 }"
-      >
-        Why Choose GameVault?
+      <h2 class="section-title" :initial="{ opacity: 0, y: 100 }" :visible="{ opacity: 1, y: 0 }">
+        Why Choose KraKen?
       </h2>
       <div class="features-container">
         <div
@@ -15,7 +10,6 @@
           :key="index"
           class="feature-item"
           :class="{ reverse: index % 2 !== 0 }"
-          v-motion
           :initial="{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }"
           :visible="{ opacity: 1, x: 0 }"
         >
@@ -69,6 +63,7 @@ const features = ref([
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+  color: white;
 }
 
 .features-container {

@@ -73,7 +73,6 @@ import IconCart from './icons/IconCart.vue'
 import IconGiftCards from './icons/IconGiftCards.vue'
 import IconSupport from './icons/IconSupport.vue'
 import IconCheckout from './icons/IconCheckout.vue'
-// New Icon Imports
 import IconLogoGamepad from './icons/IconLogoGamepad.vue'
 import IconHamburgerOpen from './icons/IconHamburgerOpen.vue'
 import IconHamburgerClose from './icons/IconHamburgerClose.vue'
@@ -207,7 +206,7 @@ onUnmounted(() => {
 .logo-text {
   position: relative;
   font-family: 'Bytesized', sans-serif;
-  font-size: 1.6em;
+  font-size: 1.8em;
   font-weight: 600;
   font-style: normal;
 

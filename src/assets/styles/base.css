@@ -1,20 +1,4 @@
 /* Base styles */
-:root {
-  --primary: #9333ea;
-  --primary-dark: #7e22ce;
-  --secondary: #f0abfc;
-  --accent: #f472b6;
-  --background: #ffffff;
-  --foreground: #27272a;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-  --card: #ffffff;
-  --card-foreground: #27272a;
-  --border: #e4e4e7;
-  --input: #e4e4e7;
-  --ring: #9333ea;
-  --radius: 0.5rem;
-}
 
 * {
   margin: 0;
@@ -36,7 +20,8 @@ body {
     'Helvetica Neue',
     sans-serif;
   color: var(--foreground);
-  background-color: var(--background);
+  /* Replace background-color with a premium gradient */
+  background: linear-gradient(135deg, #c4011e 0%, #360c0c 60%, #000000 100%);
   line-height: 1.5;
 }
 

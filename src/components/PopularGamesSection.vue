@@ -1,12 +1,7 @@
 <template>
   <section class="popular-section">
     <div class="container">
-      <h2
-        class="section-title"
-        v-motion
-        :initial="{ opacity: 0, y: 100 }"
-        :visible="{ opacity: 1, y: 0 }"
-      >
+      <h2 class="section-title" :initial="{ opacity: 0, y: 100 }" :visible="{ opacity: 1, y: 0 }">
         Popular Games
       </h2>
       <div class="games-grid">
@@ -14,7 +9,6 @@
           v-for="(game, index) in popularGames"
           :key="index"
           class="game-card"
-          v-motion
           :initial="{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }"
           :visible="{ opacity: 1, x: 0 }"
           :delay="index * 100"
@@ -46,34 +40,29 @@ import { ref } from 'vue'
 // Popular games for the grid
 const popularGames = ref([
   {
-    title: 'Cyberpunk 2077',
-    price: '$59.99',
-    image: '/placeholder.svg?height=200&width=150',
+    title: 'Mobile Legends: Bang Bang',
+    price: '$9.99',
+    image: '/src/assets/games/mlbb-g.jpeg',
   },
   {
-    title: 'Elden Ring',
-    price: '$49.99',
-    image: '/placeholder.svg?height=200&width=150',
+    title: 'PUBG Mobile',
+    price: '$14.99',
+    image: '/src/assets/games/pubg-g.jpeg',
   },
   {
-    title: 'God of War Ragnarök',
-    price: '$69.99',
-    image: '/placeholder.svg?height=200&width=150',
+    title: 'Garena Free Fire',
+    price: '$4.99',
+    image: '/src/assets/games/free_fire-g.jpeg',
   },
   {
-    title: 'Horizon Forbidden West',
-    price: '$39.99',
-    image: '/placeholder.svg?height=200&width=150',
+    title: 'Candy Crush',
+    price: '$2.99',
+    image: '/src/assets/games/candy_crush-g.jpeg',
   },
   {
-    title: 'Starfield',
-    price: '$59.99',
-    image: '/placeholder.svg?height=200&width=150',
-  },
-  {
-    title: "Baldur's Gate 3",
-    price: '$15.99',
-    image: '/placeholder.svg?height=200&width=150',
+    title: 'Honor of Kings',
+    price: '$7.99',
+    image: '/src/assets/games/hok-g.jpeg',
   },
 ])
 const hoveredGame = ref(null)
@@ -117,13 +106,24 @@ const hoveredGame = ref(null)
   transform: translateY(-4px) scale(1.03);
 }
 
-.game-image img {
+.game-image {
+  position: relative;
+  overflow: hidden;
   border-radius: 16px 16px 0 0;
+  height: 350px; /* Increased from 180px to 250px for taller boxes */
+}
+
+.game-image img {
   width: 100%;
-  height: 180px;
+  height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover .game-image img {
+  transform: scale(1.1); /* Optional: adds a subtle zoom effect on hover */
 }
 
 .game-info {
@@ -233,8 +233,11 @@ const hoveredGame = ref(null)
     margin-top: 40px;
     width: 98%;
   }
+  .game-image {
+    height: 180px; /* Adjusted for mobile */
+  }
   .game-image img {
-    height: 120px;
+    height: 100%; /* Make sure image fills container on mobile too */
   }
 }
 </style>

@@ -1,10 +1,12 @@
 <template>
   <NavBar />
-  <router-view v-slot="{ Component }">
-    <transition name="fade" mode="out-in">
-      <component :is="Component" />
-    </transition>
-  </router-view>
+  <div class="page">
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+  </div>
 </template>
 
 <script setup>
@@ -21,6 +23,9 @@ import NavBar from './components/NavBar.vue'
 .content {
   flex: 1;
   padding: 1rem;
+}
+.page {
+  margin-top: 120px;
 }
 
 .fade-enter-active,

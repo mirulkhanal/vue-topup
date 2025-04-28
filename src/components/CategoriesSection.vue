@@ -1,12 +1,7 @@
 <template>
   <section class="categories-section">
     <div class="container">
-      <h2
-        class="section-title"
-        v-motion
-        :initial="{ opacity: 0, y: 100 }"
-        :visible="{ opacity: 1, y: 0 }"
-      >
+      <h2 class="section-title" :initial="{ opacity: 0, y: 100 }" :visible="{ opacity: 1, y: 0 }">
         Featured Categories
       </h2>
       <div class="categories-grid">
@@ -15,7 +10,6 @@
           :key="index"
           class="category-card"
           :class="category.size"
-          v-motion
           :initial="{ opacity: 0, scale: 0.8 }"
           :visible="{ opacity: 1, scale: 1 }"
           :delay="index * 100"
@@ -35,37 +29,43 @@
 
 <script setup>
 import { ref } from 'vue'
+// Import your images
+import actionImage from '../assets/categories/action.webp'
+import rpgImage from '../assets/categories/RPG.webp'
+import strategyImage from '../assets/categories/strategy.jpg'
+import mobaImage from '../assets/categories/moba.webp'
+import sportsImage from '../assets/categories/sports.webp'
 
 // Categories with different sizes for non-linear layout
 const categories = ref([
   {
     name: 'Action Games',
     description: 'Fast-paced games with emphasis on challenges',
-    image: '/placeholder.svg?height=300&width=400',
-    size: 'large',
+    image: actionImage, // Use the imported variable
+    size: 'medium',
   },
   {
     name: 'RPG',
     description: 'Immersive role-playing adventures',
-    image: '/placeholder.svg?height=200&width=300',
+    image: rpgImage, // Use the imported variable
     size: 'medium',
   },
   {
     name: 'Strategy',
     description: 'Test your tactical skills',
-    image: '/placeholder.svg?height=200&width=300',
+    image: strategyImage, // Use the imported variable
     size: 'medium',
+  },
+  {
+    name: 'MOBA',
+    description: 'Multiplayer Online Battle Arena games',
+    image: mobaImage, // Use the imported variable
+    size: 'large',
   },
   {
     name: 'Sports',
     description: 'Competitive sports simulations',
-    image: '/placeholder.svg?height=150&width=200',
-    size: 'small',
-  },
-  {
-    name: 'Casual',
-    description: 'Easy to play, fun for everyone',
-    image: '/placeholder.svg?height=150&width=200',
+    image: sportsImage, // Use the imported variable
     size: 'small',
   },
 ])
@@ -79,6 +79,7 @@ const categories = ref([
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+  color: white;
 }
 
 .category-card {
@@ -100,9 +101,9 @@ const categories = ref([
 .category-image img {
   border-radius: 16px;
   width: 100%;
-  height: 180px;
-  object-fit: cover;
-  object-position: center;
+  height: 180px; /* Fixed height */
+  object-fit: cover; /* Scales image to maintain aspect ratio while filling the element's entire content box */
+  object-position: center; /* Centers the image within the box */
   display: block;
 }
 

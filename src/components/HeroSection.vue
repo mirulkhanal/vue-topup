@@ -33,20 +33,20 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 // Sample slides data - replace with your actual data
 const slides = ref([
   {
-    title: 'Welcome to NePOP',
-    description: 'Your online portal to In-App Purchases worldwide',
-    image: 'src/assets/hero-1.jpg',
+    title: 'Welcome to KraKen',
+    description: 'Your One Stop Shop  for In-App Purchases',
+    image: 'src/assets/hero/hero.jpg',
   },
   {
     title: 'Make your pick',
     description: 'Instantly make In-App Purchases for all your games',
-    image: 'src/assets/mlbb.jpg',
+    image: 'src/assets/hero/mlbb.webp',
   },
   {
     title: 'Enjoy Gaming 24/7 x 365',
     description:
       'Fully automated purchase flow so you dont miss out on thos important in-game events',
-    image: 'src/assets/pubg.jpg',
+    image: 'src/assets/hero/pubg.jpg',
   },
 ])
 
@@ -90,7 +90,7 @@ onBeforeUnmount(() => {
   height: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 12px; /* Increased from 12px to 24px for more rounding */
+  border-radius: 20px; /* Increased from 12px to 24px for more rounding */
 }
 
 .carousel-inner {
