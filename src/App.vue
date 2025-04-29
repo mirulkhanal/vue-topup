@@ -25,7 +25,7 @@ import NavBar from './components/NavBar.vue'
   padding: 1rem;
 }
 .page {
-  margin-top: 120px;
+  margin-top: 20px;
 }
 
 .fade-enter-active,

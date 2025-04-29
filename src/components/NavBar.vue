@@ -70,9 +70,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import IconHome from './icons/IconHome.vue'
 import IconShop from './icons/IconShop.vue'
 import IconCart from './icons/IconCart.vue'
-import IconGiftCards from './icons/IconGiftCards.vue'
 import IconSupport from './icons/IconSupport.vue'
-import IconCheckout from './icons/IconCheckout.vue'
 import IconLogoGamepad from './icons/IconLogoGamepad.vue'
 import IconHamburgerOpen from './icons/IconHamburgerOpen.vue'
 import IconHamburgerClose from './icons/IconHamburgerClose.vue'
@@ -96,19 +94,9 @@ const menuItems = [
     icon: IconCart,
   },
   {
-    label: 'Gift Cards',
-    link: '/gift-cards',
-    icon: IconGiftCards,
-  },
-  {
     label: 'Support',
     link: '/support',
     icon: IconSupport,
-  },
-  {
-    label: 'Checkout',
-    link: '/checkout',
-    icon: IconCheckout,
   },
 ]
 

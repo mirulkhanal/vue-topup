@@ -79,7 +79,7 @@ onBeforeUnmount(() => {
   width: 90%;
   /* border: 5px solid red; */
   margin: 0 auto;
-  margin-top: 60px; /* Increased from 40px to 80px to clear the navbar */
+  margin-top: 120px; /* Increased from 40px to 80px to clear the navbar */
   position: relative;
   overflow: hidden;
   height: 60vh; /* Adjust height as needed */
